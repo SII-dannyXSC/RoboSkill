@@ -1,0 +1,29 @@
+From bafed9462f05169fcfcf61399c2393d4c791b282 Mon Sep 17 00:00:00 2001
+From: dannyXSC <71381612+dannyXSC@users.noreply.github.com>
+Date: Fri, 28 Aug 2026 18:59:29 +0800
+Subject: [PATCH] fix: support camera-only LIBERO environments
+
+---
+ libero/libero/envs/bddl_base_domain.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/libero/libero/envs/bddl_base_domain.py b/libero/libero/envs/bddl_base_domain.py
+index 0aa0f0c..ddabd1a 100644
+--- a/libero/libero/envs/bddl_base_domain.py
++++ b/libero/libero/envs/bddl_base_domain.py
+@@ -436,6 +436,13 @@ class BDDLBaseDomain(SingleArmEnv):
+         observables["robot0_joint_pos"]._active = True
+ 
+         # low-level object information
++        # LIBERO's original implementation continues into the object-sensor
++        # construction below even when object observations are disabled. Apart
++        # from referencing uninitialized locals, that makes it impossible to
++        # create a genuinely proprioception-and-camera-only environment.
++        if not self.use_object_obs:
++            return observables
++
+         if self.use_object_obs:
+             # Get robot prefix and define observables modality
+             pf = self.robots[0].robot_model.naming_prefix
+-- 
+2.39.5 (Apple Git-154)

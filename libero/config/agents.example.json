@@ -1,0 +1,12 @@
+{
+  "agents": {
+    "local-repro": {
+      "token_sha256": "__TOKEN_SHA256__",
+      "allowed_benchmarks": ["libero_10"],
+      "max_sessions": 1,
+      "max_observation_level": 4,
+      "max_episode_steps": 2000,
+      "allow_fixed_seed": true
+    }
+  }
+}

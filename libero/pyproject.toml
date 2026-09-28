@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "libero-agent-gateway"
+version = "0.2.0"
+description = "A multi-tenant HTTP gateway that exposes filtered LIBERO observations to remote agents."
+requires-python = ">=3.8,<3.13"
+dependencies = [
+  "fastapi==0.103.2",
+  "uvicorn[standard]==0.23.2",
+  "pydantic==2.4.2",
+  "numpy>=1.22,<2",
+  "Pillow>=10,<12",
+  "typing-extensions>=4.8",
+]
+
+[project.optional-dependencies]
+test = ["httpx==0.25.2"]
+
+[project.scripts]
+libero-gateway = "libero_gateway.app:main"
+libero-gateway-token = "libero_gateway.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

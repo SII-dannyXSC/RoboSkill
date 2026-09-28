@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "batch_id": "baseline-codex",
+  "experiment_root": ".runtime/paper/baseline-codex",
+  "gateway_url": "http://127.0.0.1:18080",
+  "codex_executable": "codex",
+  "codex_auth_file": "~/.codex/auth.json",
+  "benchmarks": ["libero_10"],
+  "task_ids": [0,1,2,3,4,5,6,7,8,9],
+  "seeds": [1,2,3,4],
+  "observation_level": 4,
+  "bbox_scope": "initial",
+  "episode_length": 1000,
+  "deadline_seconds": 14400,
+  "max_concurrency": 4,
+  "startup_retry_limit": 3,
+  "startup_retry_delay_seconds": 60,
+  "model": {"name": "YOUR_CODEX_MODEL", "reasoning_effort": "high"},
+  "provider": {"id": "openai-chatgpt-auth"},
+  "review": {"scope": "none", "enabled": false, "turn_grace_seconds": 1, "timeout_seconds": 1, "max_attempts": 0}
+}

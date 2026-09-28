@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this reproducibility package, please cite this repository and LIBERO."
+title: "Explore, Execute, Evolve: Agent for Robot Reproduction Code"
+type: software
+authors:
+  - family-names: "Xie"
+    given-names: "Sicheng"
+version: 0.2.0
+date-released: 2026-09-29
+license: MIT

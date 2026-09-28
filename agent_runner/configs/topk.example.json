@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "experiment_id": "libero10-agent-selected-topk",
+  "experiment_root": ".runtime/paper/topk",
+  "source_experience_root": ".runtime/skill-libraries",
+  "gateway_url": "http://127.0.0.1:18080",
+  "benchmark": "libero_10",
+  "evaluation_seeds": [1,2,3,4],
+  "retrieval": {"top_k": 3, "threshold": 0.0},
+  "observation_level": 4,
+  "bbox_scope": "initial",
+  "episode_length": 1000,
+  "deadline_seconds": 14400,
+  "success_budget_seconds": 3600,
+  "wait_for_prerequisite": false,
+  "tasks": {
+    "0": {"description": "Put both the alphabet soup and the tomato sauce in the basket", "keywords": ["alphabet soup","tomato sauce","basket placement","multi-object"]},
+    "1": {"description": "Put both the cream cheese box and the butter in the basket", "keywords": ["cream cheese box","butter","basket placement","multi-object"]},
+    "2": {"description": "Turn on the stove and put the moka pot on it", "keywords": ["stove","moka pot","turn on","place on"]},
+    "3": {"description": "Put the black bowl in the bottom drawer of the cabinet and close it", "keywords": ["black bowl","bottom drawer","cabinet","insertion","container-closure"]},
+    "4": {"description": "Put the white mug on the left plate and the yellow-and-white mug on the right plate", "keywords": ["white mug","yellow-and-white mug","left plate","right plate","multi-object"]},
+    "5": {"description": "Pick up the book and place it in the back compartment of the caddy", "keywords": ["book","back compartment","caddy","insertion"]},
+    "6": {"description": "Put the white mug on the plate and the chocolate pudding to the right of the plate", "keywords": ["white mug","plate","chocolate pudding","right of","multi-object"]},
+    "7": {"description": "Put both the alphabet soup and the cream cheese box in the basket", "keywords": ["alphabet soup","cream cheese box","basket placement","multi-object"]},
+    "8": {"description": "Put both moka pots on the stove", "keywords": ["moka pot","stove","place on","multi-object"]},
+    "9": {"description": "Put the yellow-and-white mug in the microwave and close it", "keywords": ["yellow-and-white mug","microwave","insertion","container-closure"]}
+  },
+  "fixed_selections": {
+    "gpt-5.6-sol": {"0":[0,7,1],"1":[1,7],"2":[2,8],"3":[3,9,5],"4":[4,6],"5":[5,3],"6":[6,4],"7":[7,0,1],"8":[8,2],"9":[9,4,3]},
+    "opus": {"0":[0,7,1],"1":[1,7,0],"2":[2,8],"3":[3,9],"4":[4,6],"5":[5,7],"6":[6,4],"7":[7,1,0],"8":[8,2],"9":[9,3]},
+    "claude-fable-5-1": {"0":[0,7,1],"1":[1,7,0],"2":[2,8],"3":[3,9],"4":[4,6],"5":[5,3],"6":[6,4],"7":[7,0,1],"8":[8,2],"9":[9,3,4]},
+    "gpt-6-astra": {"0":[0,7],"1":[1,7],"2":[2,8],"3":[3],"4":[4,6],"5":[5],"6":[6,4],"7":[7,1,0],"8":[8,2],"9":[9]}
+  },
+  "models": {
+    "gpt-5.6-sol": {
+      "concurrency": 4,
+      "source_directory": "gpt-5.6-sol",
+      "batch_id": "topk-gpt-5.6-sol",
+      "executor": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "executable": "codex",
+      "auth_file": "~/.codex/auth.json",
+      "provider": {"id": "openai-chatgpt-auth"}
+    },
+    "gpt-6-astra": {
+      "concurrency": 4,
+      "source_directory": "gpt-6-astra",
+      "batch_id": "topk-gpt-6-astra",
+      "executor": "codex",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "high",
+      "context_window": 272000,
+      "auto_compact_token_limit": 240000,
+      "executable": "codex",
+      "auth_file": "~/.codex/auth.json",
+      "provider": {"id": "openai-chatgpt-auth"}
+    },
+    "opus": {
+      "concurrency": 4,
+      "source_directory": "opus-5",
+      "batch_id": "topk-opus",
+      "executor": "claude",
+      "model": "opus",
+      "reasoning_effort": "high",
+      "autocompact": "auto",
+      "executable": "claude",
+      "provider": {"id": "anthropic-first-party"}
+    },
+    "claude-fable-5-1": {
+      "concurrency": 4,
+      "source_directory": "fable-5.1",
+      "batch_id": "topk-claude-fable-5-1",
+      "executor": "claude",
+      "model": "claude-fable-5-1",
+      "reasoning_effort": "high",
+      "autocompact": "auto",
+      "executable": "claude",
+      "provider": {"id": "anthropic-first-party"}
+    }
+  }
+}

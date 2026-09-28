@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "batch_id": "program-prior-codex",
+  "experiment_root": ".runtime/paper/program-prior-codex",
+  "experience_source_root": ".runtime/paper/acquire-codex/batches/acquire-codex/experience-reviews",
+  "gateway_url": "http://127.0.0.1:18080",
+  "task_groups": [{"benchmark": "libero_10", "task_ids": [0,1,2,3,4,5,6,7,8,9]}],
+  "seeds": [1,2,3,4],
+  "observation_level": 4,
+  "bbox_scope": "initial",
+  "episode_length": 1000,
+  "deadline_seconds": 14400,
+  "startup_retry_limit": 3,
+  "startup_retry_delay_seconds": 60,
+  "codex_executable": "codex",
+  "codex_auth_file": "~/.codex/auth.json",
+  "model": {"name": "YOUR_CODEX_MODEL", "reasoning_effort": "high"},
+  "provider": {"id": "openai-chatgpt-auth"},
+  "concurrency": {"initial": 4, "maximum": 4, "stable_jobs_required": 4, "stable_after_seconds": 60}
+}

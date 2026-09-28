@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "paper": "Explore, Execute, Evolve: A Skill Acquisition and Reuse Loop for Embodied Agents",
+  "simulation": {
+    "benchmark": "libero_10",
+    "task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "observation_level": 4,
+    "bbox_scope": "initial",
+    "episode_length": 1000,
+    "deadline_seconds": 14400
+  },
+  "settings": [
+    {
+      "id": "baseline",
+      "paper_reference": "Table 1; Appendix B",
+      "seeds": [1, 2, 3, 4],
+      "models": ["gpt-6-astra", "gpt-5.6-sol", "claude-fable-5-1", "opus"],
+      "prior": "none"
+    },
+    {
+      "id": "roboskill",
+      "paper_reference": "Tables 1, 3, 15, and 16",
+      "seeds": [1, 2, 3, 4],
+      "models": ["gpt-6-astra", "gpt-5.6-sol", "claude-fable-5-1", "opus"],
+      "prior": "agent-selected-top-k",
+      "top_k": 3
+    },
+    {
+      "id": "same-task-skill",
+      "paper_reference": "Table 3; Appendix C.3",
+      "seeds": [1, 2, 3, 4],
+      "models": ["gpt-6-astra", "gpt-5.6-sol", "claude-fable-5-1", "opus"],
+      "prior": "one-same-task"
+    },
+    {
+      "id": "other-task-skill",
+      "paper_reference": "Table 5; Appendix D.2",
+      "seeds": [0, 1, 2, 3, 4],
+      "models": ["gpt-5.6-sol", "opus"],
+      "prior": "one-paired-other-task",
+      "source_task_by_target": {"0": 1, "1": 0, "2": 8, "8": 2, "3": 5, "5": 3, "4": 9, "9": 4, "6": 7, "7": 6}
+    },
+    {
+      "id": "skill-evolution",
+      "paper_reference": "Table 7; Appendix B",
+      "seeds": [100, 101, 102, 103, 104],
+      "models": ["gpt-5.6-sol", "opus"],
+      "conditions": ["baseline", "e0", "e1", "e2"]
+    },
+    {
+      "id": "text-only-ablation",
+      "paper_reference": "Table 9; Section 4.6",
+      "seeds": [1, 2, 3, 4],
+      "models": ["gpt-6-astra", "gpt-5.6-sol", "claude-fable-5-1", "opus"],
+      "prior": "same-task-text-without-code"
+    },
+    {
+      "id": "tactile-ablation",
+      "paper_reference": "Table 10; Section 4.6",
+      "seeds": [0, 1, 2, 3, 4],
+      "models": ["gpt-6-astra"],
+      "conditions": ["full", "l4-no-tactile-no-gripper-proprio-v1"],
+      "note": "The strict condition removes force-related fields and gripper state while preserving the simulator and action space."
+    }
+  ],
+  "agent_selected_top_k": {
+    "gpt-5.6-sol": {"0":[0,7,1],"1":[1,7],"2":[2,8],"3":[3,9,5],"4":[4,6],"5":[5,3],"6":[6,4],"7":[7,0,1],"8":[8,2],"9":[9,4,3]},
+    "opus": {"0":[0,7,1],"1":[1,7,0],"2":[2,8],"3":[3,9],"4":[4,6],"5":[5,7],"6":[6,4],"7":[7,1,0],"8":[8,2],"9":[9,3]},
+    "claude-fable-5-1": {"0":[0,7,1],"1":[1,7,0],"2":[2,8],"3":[3,9],"4":[4,6],"5":[5,3],"6":[6,4],"7":[7,0,1],"8":[8,2],"9":[9,3,4]},
+    "gpt-6-astra": {"0":[0,7],"1":[1,7],"2":[2,8],"3":[3],"4":[4,6],"5":[5],"6":[6,4],"7":[7,1,0],"8":[8,2],"9":[9]}
+  },
+  "rule_top_k": {"0":[0,7,1],"1":[1,7,0],"2":[2,8],"3":[3,9],"4":[4,6,9],"5":[5],"6":[6,4,0],"7":[7,1,0],"8":[8,2,0],"9":[9,3,4]}
+}

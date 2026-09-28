@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "batch_id": "baseline-claude",
+  "experiment_root": ".runtime/paper/baseline-claude",
+  "gateway_url": "http://127.0.0.1:18080",
+  "task_groups": [{"benchmark": "libero_10", "task_ids": [0,1,2,3,4,5,6,7,8,9]}],
+  "seeds": [1,2,3,4],
+  "observation_level": 4,
+  "bbox_scope": "initial",
+  "episode_length": 1000,
+  "deadline_seconds": 14400,
+  "startup_retry_limit": 3,
+  "startup_retry_delay_seconds": 60,
+  "provider": {"id": "anthropic-first-party"},
+  "claude": {"executable": "claude", "model": "YOUR_CLAUDE_MODEL", "effort": "high", "autocompact": "auto"},
+  "review": {"scope": "none", "enabled": false, "turn_grace_seconds": 1, "timeout_seconds": 1, "max_attempts": 0},
+  "concurrency": {"initial": 4, "maximum": 4, "stable_jobs_required": 4, "stable_after_seconds": 60}
+}
