@@ -1,6 +1,6 @@
 # Native Agent Harness
 
-This directory contains the single-cell controllers copied from the H800 experiment
+This directory contains the single-cell controllers copied from the paper experiment
 tree. It is not a new portable Harness and it does not start an Agent service.
 
 - `codex/cell.py`: baseline/acquisition controller using `codex exec --json`.
@@ -9,7 +9,7 @@ tree. It is not a new portable Harness and it does not start an Agent service.
 - `codex/evolution_cell.py`: reuse followed by same-session evolution review.
 - `claude/cell.py`: baseline/acquisition controller with a fixed Claude session id.
 - `claude/program_prior_cell.py` and `text_action_cell.py`: matching reuse paths.
-- `library_prior_cell.py`: adds the H800 Top-K library instruction, then calls the
+- `library_prior_cell.py`: adds the Top-K library instruction, then calls the
   native Codex or Claude prior controller.
 
 Each controller allocates one trusted LIBERO lease, persists the first Reset, exposes

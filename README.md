@@ -1,6 +1,6 @@
 # Explore, Execute, Evolve — Reproduction Code
 
-This repository is the source-only release of the native H800 execution path used
+This repository is the source-only release of the native Agent CLI execution path used
 for the paper. It has three top-level components:
 
 ```text

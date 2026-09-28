@@ -17,14 +17,14 @@ removes force-related information and gripper state.
 - Expected patched tree: `8b1c5e7faed6c486cecc9453be8b23e4cd0d25f5`
 - The random-yaw task patch is not applied or distributed.
 
-## H800 source snapshots
+## Experiment source snapshots
 
 The latest paper tactile runner was synchronized from
 `tasks/astra-high-libero10-full-vs-strict-s01234-r1` on 2026-09-25. The source
 was relocated into the three public modules; machine paths, private providers, and
 obsolete compatibility health checks were parameterized or removed.
 
-On H800, the Table 10 Full condition reused the already completed 50-cell Astra
+In the original experiment, the Table 10 Full condition reused the already completed 50-cell Astra
 baseline and the new Strict condition ran at concurrency four. A clean clone has no
 historical Full batch, so the public tactile entry can construct both conditions in
 parallel at two cells per condition, preserving a total concurrency of four. This is

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dispatch one published H800 experiment runner."""
+"""Dispatch one published experiment runner."""
 
 from __future__ import annotations
 

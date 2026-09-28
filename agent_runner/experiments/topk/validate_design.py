@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate a public Top-K plan without historical H800 artifacts."""
+"""Validate a public Top-K plan without historical run artifacts."""
 
 from __future__ import annotations
 
